@@ -14,10 +14,16 @@ app.use(Express.json());
 app.use("/user", userRouter);
 app.use("/tasks", taskRouter);
 
-
+app.get("/", (req, res) => {
+    console.log("hit");
+    res.status(200).json({
+        message: "Get endpoint reached "
+    })
+})
 
 async function main() {
     await mongoose.connect(process.env.MONGO_CONN_STRING as string);
+    console.log("DB connected...")
     app.listen(3000);
 
 }

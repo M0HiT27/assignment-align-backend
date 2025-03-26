@@ -18,9 +18,11 @@ taskRouter.get("/", async (req: Request, res: Response) => {
             authorEmail: parsedEmail
         })
         if (tasks) {
+            console.log("sending tasks...");
             res.status(200).json({
                 tasks: tasks
             })
+            console.log("tasks sent");
             return;
         }
         throw ""
